@@ -8,6 +8,7 @@ import 'package:flutter_auth/components/rounded_button.dart';
 import 'package:flutter_auth/components/rounded_input_field.dart';
 import 'package:flutter_auth/components/rounded_password_field.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
 class Body extends StatefulWidget {
   @override
@@ -17,7 +18,22 @@ class Body extends StatefulWidget {
 class _BodyState extends State<Body> {
   var _roles = ['doctor', 'patient', 'nurse', 'board member'];
   var _currentSelected = 'doctor';
+  String email;
+  String password;
+  final _auth = FirebaseAuth.instance;
+    User loggedInUser;
 
+  void getCurrentUser() async {
+    try {
+      final user = await _auth.currentUser;
+      if (user != null) {
+        loggedInUser = user;
+        print(loggedInUser.email);
+      }
+    } catch (exception) {
+      print('Exception occured in getCurrentUser method as:' + exception);
+    }
+  }
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
@@ -37,10 +53,14 @@ class _BodyState extends State<Body> {
             ),
             RoundedInputField(
               hintText: "Your Email",
-              onChanged: (value) {},
+              onChanged: (value) {
+                email = value;
+              },
             ),
             RoundedPasswordField(
-              onChanged: (value) {},
+              onChanged: (value) {
+                password = value;
+              },
             ),
             Text('Select your Role'),
             DropdownButton<String>(
@@ -57,7 +77,18 @@ class _BodyState extends State<Body> {
             ),
             RoundedButton(
               text: "SIGNUP",
-              press: () {},
+              press: () async {
+                print('Email : - $email' + ' Password : - $password');
+                try {
+                  final newUser = await _auth.createUserWithEmailAndPassword(
+                      email: email, password: password);
+                  if (newUser != null) {
+                    Navigator.pushNamed(context, 'mypatientsscreen');
+                  }
+                } catch (exception) {
+                  print('Exception occured in SignUp new User as :- '+exception);
+                }
+              },
             ),
             SizedBox(height: size.height * 0.03),
             AlreadyHaveAnAccountCheck(

@@ -1,3 +1,4 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_auth/Screens/Login/login_screen.dart';
 import 'package:flutter_auth/Screens/Role/role_screen.dart';
@@ -8,7 +9,11 @@ import 'package:flutter_auth/Screens/nav_screens.dart';
 import 'package:flutter_auth/constants.dart';
 import 'package:flutter_auth/database/databaseUI.dart';
 
-void main() => runApp(MyApp());
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
+  runApp(MyApp());
+}
 
 class MyApp extends StatelessWidget {
   // This widget is the root of your application.
@@ -23,12 +28,12 @@ class MyApp extends StatelessWidget {
       ),
       home: NavScreen(),
       routes: {
-        'databaseui':(context)=>DatabaseUI(),
-        'rolescreen' :(context)=>RoleScreen(),
-        'welcomescreen':(context)=>WelcomeScreen(),
-        'signupscreen':(context)=>SignUpScreen(),
-        'loginscreen':(context)=>LoginScreen(),
-        'mypatientsscreen':(context)=>MyPatientsScreen(),
+        'databaseui': (context) => DatabaseUI(),
+        'rolescreen': (context) => RoleScreen(),
+        'welcomescreen': (context) => WelcomeScreen(),
+        'signupscreen': (context) => SignUpScreen(),
+        'loginscreen': (context) => LoginScreen(),
+        'mypatientsscreen': (context) => MyPatientsScreen(),
       },
     );
   }

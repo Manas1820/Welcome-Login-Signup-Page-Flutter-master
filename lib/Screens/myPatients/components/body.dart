@@ -13,7 +13,7 @@ class Body extends StatelessWidget {
           age: '45 years ',
           issue: 'Bone Fracture in the ankle region',
           uid: '15567',
-          pictureLocation: 'assets/images/coolimage.jpeg',
+          pictureLocation: 'assets/images/leonardo.jpeg',
           scale: 25.0,
         ),
         SizedBox(
