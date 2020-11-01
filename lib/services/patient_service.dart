@@ -13,4 +13,16 @@ class PatientService {
   getPatients() async {
     return await _repository.getAll('patients');
   }
+
+  getPatientById(patientId) async {
+    return await _repository.getById('patients', patientId);
+  }
+
+  updatePatient(Patients patient) async {
+    return await _repository.update('patients', patient.patientMap());
+  }
+
+  deletePatient(patientId) async {
+  return await _repository.delete('patients', patientId);
+  }
 }

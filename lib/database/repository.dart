@@ -25,4 +25,20 @@ class Repository {
     var conn = await database;
     return await conn.query(table);
   }
+
+  getById(String table, patientId) async {
+    var conn = await database;
+    return await conn.query(table, where: 'id=?', whereArgs: [patientId]);
+  }
+
+  update(String table, data) async {
+    var conn = await database;
+    return await conn
+        .update(table, data, where: 'id=?', whereArgs: [data['id']]);
+  }
+
+  delete(String table, patientId) async {
+    var conn = await database;
+   return await conn.rawDelete("DELETE FROM $table WHERE id= $patientId");
+  }
 }
