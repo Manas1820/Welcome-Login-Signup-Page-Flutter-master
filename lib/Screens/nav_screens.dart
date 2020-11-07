@@ -3,6 +3,7 @@ import 'package:flutter_auth/Screens/Login/login_screen.dart';
 import 'package:flutter_auth/Screens/Role/role_screen.dart';
 import 'package:flutter_auth/Screens/Signup/signup_screen.dart';
 import 'package:flutter_auth/Screens/Welcome/welcome_screen.dart';
+import 'package:flutter_auth/Screens/checkingaccess.dart';
 import 'package:flutter_auth/Screens/custom_tab_bar.dart';
 import 'package:flutter_auth/Screens/inventoryScreen.dart';
 import 'package:flutter_auth/Screens/myDoctors/mydoctors_screen.dart';
@@ -27,7 +28,7 @@ class _NavScreenState extends State<NavScreen> {
    Inventory(),
     MyPatientsScreen(),
     MainScreen(),
-    DatabaseUI(),
+    Roles(),
   ];
   final List<IconData> _icons = [
     Icons.home,
