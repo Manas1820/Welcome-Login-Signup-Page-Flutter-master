@@ -1,6 +1,4 @@
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_auth/Screens/myPatients/components/body.dart';
 import 'package:flutter_auth/constants.dart';
 import 'package:flutter_auth/models/patients.dart';
 import 'package:flutter_auth/services/patient_service.dart';

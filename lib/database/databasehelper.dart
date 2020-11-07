@@ -33,7 +33,7 @@ class DatabaseHelper {
     return await openDatabase(path, version: _dbVersion, onCreate: _onCreate);
   }
 
-  Future _onCreate(Database db, int version) {
+  void _onCreate(Database db, int version) {
     //three single quotes to write string in multiple lines
     db.execute('''
     CREATE TABLE $_tableName (
@@ -41,6 +41,7 @@ class DatabaseHelper {
      $columnName TEXT NOT NULL)
     ''');
   }
+
 //return id of the entered row
   Future<int> insert(Map<String, dynamic> row) async {
     Database db = await instance.database;
