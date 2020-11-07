@@ -3,6 +3,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_auth/Screens/Login/components/background.dart';
 import 'package:flutter_auth/Screens/Signup/signup_screen.dart';
+import 'package:flutter_auth/Screens/checkingaccess.dart';
 import 'package:flutter_auth/Screens/myPatients/mypatients_screen.dart';
 import 'package:flutter_auth/components/already_have_an_account_acheck.dart';
 import 'package:flutter_auth/components/rounded_button.dart';
@@ -27,12 +28,14 @@ class _BodyState extends State<Body> {
   String password;
   void logInUser() async {
     try {
-      final user = await _auth.signInWithEmailAndPassword(
+      UserCredential user = await _auth.signInWithEmailAndPassword(
           email: email, password: password);
-      if (user != null) {
-        Navigator.pushNamed(context, 'mypatientsscreen');
-        print('User with email $email is logged in ');
-      }
+      Navigator.of(context)
+          .push(MaterialPageRoute(builder: (context) => Roles(user: user,)));
+      // if (user != null) {
+
+      //   print('User with email $email is logged in ');
+      // }
     } catch (exception) {
       print('Exception in singin as:-' + exception);
     }
