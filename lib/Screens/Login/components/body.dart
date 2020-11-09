@@ -1,10 +1,9 @@
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_auth/Screens/Login/components/background.dart';
+import 'package:flutter_auth/Screens/Signup/components/verifyUser.dart';
 import 'package:flutter_auth/Screens/Signup/signup_screen.dart';
-import 'package:flutter_auth/Screens/checkingaccess.dart';
-import 'package:flutter_auth/Screens/myPatients/mypatients_screen.dart';
+
 import 'package:flutter_auth/components/already_have_an_account_acheck.dart';
 import 'package:flutter_auth/components/rounded_button.dart';
 import 'package:flutter_auth/components/rounded_input_field.dart';
@@ -30,12 +29,14 @@ class _BodyState extends State<Body> {
     try {
       UserCredential user = await _auth.signInWithEmailAndPassword(
           email: email, password: password);
-      Navigator.of(context)
-          .push(MaterialPageRoute(builder: (context) => Roles(user: user,)));
+      Navigator.of(context).push(MaterialPageRoute(
+          builder: (context) => Roles(
+                user: user,
+              )));
       // if (user != null) {
 
-      //   print('User with email $email is logged in ');
-      // }
+        print('User with email $email is logged in '+user.user.uid);
+      
     } catch (exception) {
       print('Exception in singin as:-' + exception);
     }

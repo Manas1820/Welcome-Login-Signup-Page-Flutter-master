@@ -21,7 +21,6 @@ class _MainScreenState extends State<MainScreen> {
   DateTime _date = DateTime.now();
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
     _loadPatients();
   }

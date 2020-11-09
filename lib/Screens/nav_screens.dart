@@ -2,14 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_auth/Screens/Login/login_screen.dart';
 import 'package:flutter_auth/Screens/Role/role_screen.dart';
 import 'package:flutter_auth/Screens/Signup/signup_screen.dart';
-import 'package:flutter_auth/Screens/Welcome/welcome_screen.dart';
-import 'package:flutter_auth/Screens/checkingaccess.dart';
+import 'package:flutter_auth/Screens/admin/admin_screen.dart';
 import 'package:flutter_auth/Screens/custom_tab_bar.dart';
 import 'package:flutter_auth/Screens/inventoryScreen.dart';
-import 'package:flutter_auth/Screens/myDoctors/mydoctors_screen.dart';
-import 'package:flutter_auth/Screens/myPatients/mainscreen.dart';
 import 'package:flutter_auth/Screens/myPatients/mypatients_screen.dart';
-import 'package:flutter_auth/database/databaseUI.dart';
 
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 
@@ -25,10 +21,10 @@ class _NavScreenState extends State<NavScreen> {
     LoginScreen(),
     RoleScreen(),
     SignUpScreen(),
-   Inventory(),
+    Inventory(),
     MyPatientsScreen(),
-    MainScreen(),
-    Roles(),
+    MyAdminScreen(),
+    MyAdminScreen(),
   ];
   final List<IconData> _icons = [
     Icons.home,

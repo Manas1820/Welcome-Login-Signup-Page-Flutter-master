@@ -11,10 +11,10 @@ class DatabaseConnection {
     return database;
   }
 
-  _onCreatingDatabase(Database db, int version)async {
-    await db
-        .execute("CREATE TABLE patients (id INTEGER PRIMARY KEY, name TEXT , disease TEXT)");
+  _onCreatingDatabase(Database db, int version) async {
+    await db.execute("""
+        CREATE TABLE patients (id INTEGER PRIMARY KEY, name TEXT , disease TEXT,sex TEXT,contact TEXT,lvisit TEXT)
+CREATE TABLE patients (id INTEGER PRIMARY KEY, name TEXT , degree TEXT,contact TEXT)        
+        """);
   }
-
-
 }
