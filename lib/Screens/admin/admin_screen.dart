@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_auth/Screens/myPatients/components/body.dart';
+import 'package:flutter_auth/Screens/admin/body.dart';
+import 'package:flutter_auth/Screens/admin/feedback.dart';
+import 'package:flutter_auth/Screens/inventoryScreen.dart';
 import 'package:flutter_auth/constants.dart';
 import 'package:flutter_auth/models/patients.dart';
 import 'package:flutter_auth/services/patient_service.dart';
@@ -71,17 +73,16 @@ class _MyAdminScreenState extends State<MyAdminScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-     
       body: Body(),
       appBar: AppBar(
-        title: Text('My Doctors'),
+        title: Text('Staff List'),
       ),
       drawer: Drawer(
           child: ListView(
         children: [
           UserAccountsDrawerHeader(
-            accountEmail: Text('Patient'),
-            accountName: Text('Ellie Jain'),
+            accountEmail: Text('Board Member'),
+            accountName: Text('Mr Bond'),
             currentAccountPicture: GestureDetector(
               child: CircleAvatar(
                 backgroundColor: kPrimaryLightColor,
@@ -94,24 +95,29 @@ class _MyAdminScreenState extends State<MyAdminScreen> {
             ),
           ),
           ListTile(
-            title: Text('Appointments'),
+            title: Text('Staff List'),
             leading: Icon(Icons.notifications),
-          ),
-          ListTile(
             onTap: () {
               Navigator.of(context).push(
                   MaterialPageRoute(builder: (context) => MyAdminScreen()));
             },
-            title: Text('My Doctors'),
-            leading: Icon(Icons.account_circle),
           ),
           ListTile(
-            title: Text('Payments'),
-            leading: Icon(Icons.payment),
+            onTap: () {
+              Navigator.of(context).push(
+                  MaterialPageRoute(builder: (context) => Feedbacks()));
+            },
+            title: Text('Feedback/Complaints'),
+            leading: Icon(Icons.account_circle),
           ),
+       
           ListTile(
             title: Text('Equipment Status'),
             leading: Icon(Icons.shop),
+            onTap: () {
+              Navigator.of(context)
+                  .push(MaterialPageRoute(builder: (context) => Inventory()));
+            },
           ),
         ],
       )),

@@ -7,6 +7,7 @@ import 'package:flutter_auth/components/already_have_an_account_acheck.dart';
 import 'package:flutter_auth/components/rounded_button.dart';
 import 'package:flutter_auth/components/rounded_input_field.dart';
 import 'package:flutter_auth/components/rounded_password_field.dart';
+import 'package:flutter_auth/roleAwaited.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
@@ -16,12 +17,12 @@ class Body extends StatefulWidget {
 }
 
 class _BodyState extends State<Body> {
-  var _roles = ['doctor', 'patient', 'nurse', 'board member'];
-  var _currentSelected = 'doctor';
+
+
   String email;
   String password;
   final _auth = FirebaseAuth.instance;
-    User loggedInUser;
+  User loggedInUser;
 
   void getCurrentUser() async {
     try {
@@ -34,6 +35,7 @@ class _BodyState extends State<Body> {
       print('Exception occured in getCurrentUser method as:' + exception);
     }
   }
+
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
@@ -62,31 +64,36 @@ class _BodyState extends State<Body> {
                 password = value;
               },
             ),
-            Text('Select your Role'),
-            DropdownButton<String>(
-              items: _roles.map((String items) {
-                return DropdownMenuItem<String>(
-                    value: items, child: Text(items));
-              }).toList(),
-              onChanged: (String newValue) {
-                setState(() {
-                  this._currentSelected = newValue;
-                });
-              },
-              value: _currentSelected,
-            ),
+            // Text('Select your Role'),
+            // DropdownButton<String>(
+            //   items: _roles.map((String items) {
+            //     return DropdownMenuItem<String>(
+            //         value: items, child: Text(items));
+            //   }).toList(),
+            //   onChanged: (String newValue) {
+            //     setState(() {
+            //       this._currentSelected = newValue;
+            //     });
+            //   },
+            //   value: _currentSelected,
+            // ),
             RoundedButton(
               text: "SIGNUP",
               press: () async {
-                print('Email : - $email' + ' Password : - $password');
+               
                 try {
+                  
                   final newUser = await _auth.createUserWithEmailAndPassword(
                       email: email, password: password);
+                      print('Email : - $email' + ' Password : - $password');
                   if (newUser != null) {
-                    Navigator.pushNamed(context, 'mypatientsscreen');
+
+                    Navigator.of(context).push(
+                        MaterialPageRoute(builder: (context) => AwaitedRole()));
                   }
                 } catch (exception) {
-                  print('Exception occured in SignUp new User as :- '+exception);
+                  print('Exception occured in SignUp new User as :- ' +
+                      exception);
                 }
               },
             ),

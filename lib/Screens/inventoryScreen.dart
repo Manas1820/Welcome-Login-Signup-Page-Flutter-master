@@ -8,11 +8,12 @@ class Inventory extends StatefulWidget {
 }
 
 class _InventoryState extends State<Inventory> {
-  var roomnumber = 0;
+  var roomnumber=0;
   final firestore = FirebaseFirestore.instance;
 
   void readData() async {
     databaseReference.once().then((DataSnapshot snapshot) {
+     
       print('Data : ${snapshot.value}');
     });
   }
@@ -53,12 +54,6 @@ class _InventoryState extends State<Inventory> {
                 updateData();
                 print(roomnumber);
               }),
-          IconButton(
-              icon: Icon(Icons.update),
-              onPressed: () {
-                readData();
-                firestore.collection('users').add({'name': 'yola'});
-              })
         ],
       ),
     );

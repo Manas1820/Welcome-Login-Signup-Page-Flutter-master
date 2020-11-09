@@ -93,10 +93,7 @@ class _MyPatientsScreenState extends State<MyDoctorScreen> {
               ),
             ),
           ),
-          ListTile(
-            title: Text('Appointments'),
-            leading: Icon(Icons.notifications),
-          ),
+         
           ListTile(
             onTap: () {
               Navigator.of(context).push(
@@ -105,14 +102,8 @@ class _MyPatientsScreenState extends State<MyDoctorScreen> {
             title: Text('My Doctors'),
             leading: Icon(Icons.account_circle),
           ),
-          ListTile(
-            title: Text('Payments'),
-            leading: Icon(Icons.payment),
-          ),
-          ListTile(
-            title: Text('Equipment Status'),
-            leading: Icon(Icons.shop),
-          ),
+       
+         
         ],
       )),
     );

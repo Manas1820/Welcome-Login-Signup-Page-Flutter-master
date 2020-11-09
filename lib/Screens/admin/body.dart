@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_auth/Screens/myPatients/components/background.dart';
+import 'package:flutter_auth/Screens/admin/background.dart';
+
 import 'package:flutter_auth/constants.dart';
 
 class Body extends StatelessWidget {
@@ -7,33 +8,70 @@ class Body extends StatelessWidget {
   Widget build(BuildContext context) {
     return Background(
       child: ListView(children: [
-        DoctorsCard(
-          fName: 'Will Smith',
+        Center(
+            child: Text(
+          'Doctors',
+          style: TextStyle(
+            fontSize: 20.0,fontWeight: FontWeight.bold
+          ),
+        )),
+        
+        PatientsCard(
+          fName: 'Leonardo',
           sex: 'M',
           age: '45 years ',
-          issue: 'Bone Fracture in the ankle region',
+          issue: 'Bachelor of Medical Sciences',
           uid: '15567',
-          pictureLocation: 'assets/images/smith.jpg',
+          pictureLocation: 'assets/images/leonardo.jpeg',
           scale: 25.0,
         ),
         SizedBox(
           height: 10.0,
         ),
-        DoctorsCard(
-          fName: 'Kobe Bryant',
-          sex: 'M',
+        PatientsCard(
+          fName: 'Gal',
+          sex: 'F',
           age: '35 years',
-          issue: 'Ligament Fracture in upper arm',
+          issue: 'M.S. (Neurosurgery)',
           uid: '35498',
-          pictureLocation: 'assets/images/kobe.jpg',
+          pictureLocation: 'assets/images/scarlett.jpg',
           scale: 7.0,
-        )
+        ),SizedBox(height: 20.0,),
+        Center(
+            child: Text(
+          'Nurses',
+          style: TextStyle(
+            fontSize: 20.0,
+            fontWeight: FontWeight.bold
+          ),
+        )),
+        PatientsCard(
+          fName: 'Nero',
+          sex: 'F',
+          age: '28 years ',
+          issue: 'Masters in something',
+          uid: '15567',
+          pictureLocation: 'assets/images/leonardo.jpeg',
+          scale: 25.0,
+        ),
+        SizedBox(
+          height: 10.0,
+        ),
+        PatientsCard(
+          fName: 'Yuri',
+          sex: 'F',
+          age: '25 years',
+          issue: 'Some Qualification',
+          uid: '35498',
+          pictureLocation: 'assets/images/scarlett.jpg',
+          scale: 7.0,
+        ),
       ]),
     );
   }
 }
 
-class DoctorsCard extends StatelessWidget {
+class PatientsCard extends StatelessWidget {
   final String fName;
 
   final String pictureLocation;
@@ -43,7 +81,7 @@ class DoctorsCard extends StatelessWidget {
   final String issue;
   final double scale;
 
-  DoctorsCard({
+  PatientsCard({
     this.fName,
     this.age,
     this.pictureLocation,
@@ -86,7 +124,10 @@ class DoctorsCard extends StatelessWidget {
                             backgroundColor: kPrimaryColor,
                             child: CircleAvatar(
                               radius: 50,
-                              backgroundImage: AssetImage(pictureLocation),
+                              child: Icon(
+                                Icons.account_box_rounded,
+                                size: 50.0,
+                              ),
                             ),
                           )
                         ],
@@ -96,14 +137,12 @@ class DoctorsCard extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          mainAxisAlignment: MainAxisAlignment.start,
                           children: [
                             Text(
                               fName,
                               style: TextStyle(fontSize: 20.0),
                             ),
-                            CircleAvatar(backgroundColor: Colors.green,),
-                           
                             Container(
                               margin: EdgeInsets.only(left: 20.0),
                               child: Image.asset(
@@ -134,7 +173,6 @@ class DoctorsCard extends StatelessWidget {
                         SizedBox(
                           height: 7.0,
                         ),
-                  
                       ],
                     )
                   ],

@@ -8,7 +8,7 @@ import 'package:flutter_auth/Screens/Welcome/welcome_screen.dart';
 import 'package:flutter_auth/Screens/myPatients/mypatients_screen.dart';
 import 'package:flutter_auth/Screens/nav_screens.dart';
 import 'package:flutter_auth/constants.dart';
-import 'package:flutter_auth/database/databaseUI.dart';
+
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -26,15 +26,13 @@ class MyApp extends StatelessWidget {
         primaryColor: kPrimaryColor,
         scaffoldBackgroundColor: Colors.white,
       ),
-      home: NavScreen(),
+      home: WelcomeScreen(),
       routes: {
-        'databaseui': (context) => DatabaseUI(),
         'rolescreen': (context) => RoleScreen(),
         'welcomescreen': (context) => WelcomeScreen(),
         'signupscreen': (context) => SignUpScreen(),
         'loginscreen': (context) => LoginScreen(),
         'mypatientsscreen': (context) => MyPatientsScreen(),
-       
       },
     );
   }

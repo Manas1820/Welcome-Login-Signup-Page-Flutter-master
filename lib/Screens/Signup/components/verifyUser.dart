@@ -2,6 +2,9 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:flutter_auth/Screens/admin/admin_screen.dart';
+import 'package:flutter_auth/Screens/myDoctors/mydoctors_screen.dart';
+import 'package:flutter_auth/Screens/myPatients/mypatients_screen.dart';
 
 class Roles extends StatefulWidget {
   final UserCredential user;
@@ -47,13 +50,17 @@ class _RolesState extends State<Roles> {
   Widget build(BuildContext context) {
     if (_loading) {
       if (data['role'] == 'admin') {
-        return Container(
-          child: Text('Hello'),
-        );
+        return MyAdminScreen();
       }
-      return Container(
-        child: Text('Hello Dear'),
-      );
+      if (data['role'] == 'doctor') {
+        return MyPatientsScreen();
+      }
+      if (data['role'] == 'patient') {
+        return MyDoctorScreen();
+      }
+      if (data['role'] == 'nurse') {
+        return MyDoctorScreen();
+      }
     } else {
       return Loader();
     }

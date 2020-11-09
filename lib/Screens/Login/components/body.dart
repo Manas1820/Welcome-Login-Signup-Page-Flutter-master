@@ -20,8 +20,7 @@ class Body extends StatefulWidget {
 }
 
 class _BodyState extends State<Body> {
-  var _roles = ['doctor', 'patient', 'nurse', 'board member'];
-  var _currentSelected = 'doctor';
+
   final _auth = FirebaseAuth.instance;
   String email;
   String password;

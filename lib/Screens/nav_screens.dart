@@ -3,11 +3,14 @@ import 'package:flutter_auth/Screens/Login/login_screen.dart';
 import 'package:flutter_auth/Screens/Role/role_screen.dart';
 import 'package:flutter_auth/Screens/Signup/signup_screen.dart';
 import 'package:flutter_auth/Screens/admin/admin_screen.dart';
+import 'package:flutter_auth/Screens/admin/feedback.dart';
 import 'package:flutter_auth/Screens/custom_tab_bar.dart';
 import 'package:flutter_auth/Screens/inventoryScreen.dart';
+import 'package:flutter_auth/Screens/myDoctors/mydoctors_screen.dart';
 import 'package:flutter_auth/Screens/myPatients/mypatients_screen.dart';
-
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
+
+import 'admin/body.dart';
 
 class NavScreen extends StatefulWidget {
   NavScreen({Key key}) : super(key: key);
@@ -22,9 +25,10 @@ class _NavScreenState extends State<NavScreen> {
     RoleScreen(),
     SignUpScreen(),
     Inventory(),
-    MyPatientsScreen(),
     MyAdminScreen(),
-    MyAdminScreen(),
+    Feedbacks(),
+    MyDoctorScreen(),
+    Body(),
   ];
   final List<IconData> _icons = [
     Icons.home,
@@ -33,6 +37,7 @@ class _NavScreenState extends State<NavScreen> {
     MdiIcons.circleOutline,
     MdiIcons.bellOutline,
     MdiIcons.bellOutline,
+    Icons.menu,
     Icons.menu,
   ];
   int _selectedIndex = 0;

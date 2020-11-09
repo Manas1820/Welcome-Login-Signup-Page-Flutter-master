@@ -1,38 +1,35 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_auth/Screens/myPatients/components/background.dart';
-import 'package:flutter_auth/constants.dart';
-
-class Body extends StatelessWidget {
+class Feedbacks extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Background(
-      child: ListView(children: [
-        DoctorsCard(
+    return Scaffold(
+      appBar: AppBar(title: Text('FeedBack n Complaints')),
+      body:ListView(children: [
+      DoctorsCard(
           fName: 'Will Smith',
           sex: 'M',
           age: '45 years ',
-          issue: 'Bone Fracture in the ankle region',
+          issue: 'Room No 427 has problem with the AC',
           uid: '15567',
           pictureLocation: 'assets/images/smith.jpg',
           scale: 25.0,
         ),
-        SizedBox(
-          height: 10.0,
-        ),
+        SizedBox(height:10.0),
         DoctorsCard(
-          fName: 'Kobe Bryant',
+          fName: 'Nie Yao',
           sex: 'M',
-          age: '35 years',
-          issue: 'Ligament Fracture in upper arm',
-          uid: '35498',
-          pictureLocation: 'assets/images/kobe.jpg',
-          scale: 7.0,
-        )
-      ]),
+          age: '27 years ',
+          issue: 'Was very satisfied with the services of the hospital',
+          uid: '15567',
+          pictureLocation: 'assets/images/smith.jpg',
+          scale: 25.0,
+        ),
+      ],
+      ),
+      
     );
   }
 }
-
 class DoctorsCard extends StatelessWidget {
   final String fName;
 
@@ -77,21 +74,7 @@ class DoctorsCard extends StatelessWidget {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Padding(
-                      padding: EdgeInsets.all(5.0),
-                      child: Column(
-                        children: [
-                          CircleAvatar(
-                            radius: 55,
-                            backgroundColor: kPrimaryColor,
-                            child: CircleAvatar(
-                              radius: 50,
-                              backgroundImage: AssetImage(pictureLocation),
-                            ),
-                          )
-                        ],
-                      ),
-                    ),
+                    
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
@@ -102,18 +85,7 @@ class DoctorsCard extends StatelessWidget {
                               fName,
                               style: TextStyle(fontSize: 20.0),
                             ),
-                           
-                           
-                            Container(
-                              margin: EdgeInsets.only(left: 20.0),
-                              child: Image.asset(
-                                sex == 'M'
-                                    ? 'assets/images/male-sign.png'
-                                    : 'assets/images/female-sign.png',
-                                scale: 20.0,
-                                color: Colors.grey,
-                              ),
-                            )
+                        
                           ],
                         ),
                         SizedBox(
@@ -144,7 +116,7 @@ class DoctorsCard extends StatelessWidget {
                   children: [
                     Text(
                       issue,
-                      style: TextStyle(fontSize: 20.0),
+                      style: TextStyle(fontSize: 12.0),
                     )
                   ],
                 )
